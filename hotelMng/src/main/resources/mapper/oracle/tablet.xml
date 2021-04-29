@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tablet">
+
+	<insert id = "insertTablet" parameterType="TabletVo">
+		INSERT INTO TABLET (No
+							, RoomNo
+							, Request
+							, Confirm
+							, Time
+		)
+		
+		VALUES (seq_tablet.NEXTVAL
+				, #{RoomNo}
+				, #{Request}
+				, 'N'
+				, #{Time}
+		)
+		
+	</insert>
+	
+	<select id="selectTablet" parameterType="String" resultType="TabletVo">
+		SELECT * FROM Tablet
+		WHERE RoomNo = '101' ORDER BY No DESC
+	</select>
+	
+	<update id="updateTablet" parameterType="TabletVo">
+		UPDATE Tablet SET Confirm='Y'
+		WHERE No=#{No}
+	</update>
+
+	<select id="listTablet" resultType="TabletVo">	
+	SELECT * FROM Tablet
+		WHERE RoomNo = '101' ORDER BY no DESC
+	</select>
+	
+</mapper>

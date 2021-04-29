@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="QNA">
+
+	<select id="listAll" resultType="com.khotel.Vo.QnaVo">
+		<!-- select QNACODE, QNATITLE, username, QNAWRITER, QNAREGISTERDATE, QNAVIEWCOUNT
+		from qna q, member m
+		where q.qnawriter = m.userid 
+		order by QNACODE desc -->
+		select *
+		from (
+			select rownum as rn, A.*
+			from (
+		select QNACODE, QNATITLE, QNAWRITER, QNAREGISTERDATE, QNAVIEWCOUNT
+		from QNA
+		order by QNACODE desc
+			) A
+		) 
+		where rn between ${start} and ${end}
+	</select>
+	
+	<select id="QNA.listSome" resultType="com.khotel.Vo.QnaVo">
+		<!-- select QNACODE, QNATITLE, username, QNAWRITER, QNAREGISTERDATE, QNAVIEWCOUNT
+		from qna q, member m
+		where q.qnawriter = m.userid 
+		order by QNACODE desc -->
+		select *
+		from (
+			select rownum as rn, A.*
+			from (
+		select QNACODE, QNATITLE, QNAWRITER, QNAREGISTERDATE, QNAVIEWCOUNT
+		from QNA
+		where QNAWRITER = #{UserId}
+		order by QNACODE desc
+			) A
+		) 
+		where rn between ${start} and ${end}
+	</select>
+
+	<insert id="create" parameterType="QnaVo">
+		INSERT INTO QNA ( 
+		QNACODE, 
+		QNATITLE, 
+		QNACONTENT, 
+		QNAWRITER,
+		QNAREGISTERDATE) 
+
+		VALUES
+		(seq_board.nextval, 
+		#{QNATITLE}, 
+		#{QNACONTENT}, 
+		#{QNAWRITER},
+		#{QNAREGISTERDATE}
+		)
+		</insert>
+
+
+	<update id="increaseViewcnt">
+		update QNA
+		set QNAVIEWCOUNT = QNAVIEWCOUNT+1
+		where QNACODE= #{QNACODE}
+	</update>
+
+	 <select id="view" resultType = "com.khotel.Vo.QnaVo">
+		select QNACODE, QNATITLE, QNACONTENT, QNAREGISTERDATE, QNAVIEWCOUNT, QNAWRITER
+		from QNA
+		where QNACODE = #{QNACODE}
+	</select>
+
+	<update id="updateArticle">
+		update QNA
+		set QNATITLE= #{QNATITLE}, QNACONTENT= #{QNACONTENT}
+		where QNACODE = #{QNACODE}
+	</update>
+
+	<delete id="deleteArticle">
+		delete from qna where QNACODE = #{QNACODE}
+	</delete>
+	
+	<select id="QNA.count" resultType="int">
+		select COUNT(QNACODE)
+		from QNA
+	</select>
+	
+
+</mapper>

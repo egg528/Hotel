@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="room">
+
+	<select id="roomlistclass" parameterType="String" resultType="RoomVo">
+		SELECT *
+		FROM RoomType natural join RoomNo
+		where roomtype = #{room}
+		order by roomno
+	</select>
+	
+	<select id="selectRoom" parameterType="RoomVo" resultType="RoomVo">
+		SELECT * FROM RoomType natural join RoomNo WHERE RoomNo = #{RoomNo}
+	</select>
+	
+	<select id="listRoom" resultType="RoomVo">	
+		SELECT *
+		FROM RoomType natural join RoomNo
+		order by fee, roomno
+	</select>
+	
+	<select id="listRoom2" resultType="RoomVo">	
+		SELECT *
+		FROM RoomType natural join RoomNo
+		order by fee, roomno
+	</select>
+	
+	<select id="listRoomReservation" parameterType="String" resultType="ReservationVo">
+		SELECT *
+		FROM reservation Where roomcode = #{roomNo}
+	</select>
+	
+	<select id="findRoomReservation" parameterType="java.util.Map" resultType="Integer">
+		SELECT COUNT(*)
+		FROM reservation Where roomcode = #{roomNo} and reservationcheckin = #{resdate}
+	</select>	
+	
+	<select id="findRoom" parameterType="java.util.Map" resultType="Integer">
+	<![CDATA[ 
+		SELECT COUNT(*)
+		FROM reservation Where roomcode = #{roomNo}
+		 and (( reservationcheckin between #{ReservationCheckIn}  and  #{ReservationCheckOut})
+		 or ( reservationcheckout between #{ReservationCheckIn}  and  #{ReservationCheckOut})
+		 or ( reservationcheckin < #{ReservationCheckOut} and reservationcheckout > #{ReservationCheckIn}))
+	]]>	 	 
+	</select>		
+	
+	<select id="findEmptyRoomList" parameterType="ReservationVo" resultType="RoomVo">
+	<![CDATA[ 
+		SELECT *
+		FROM RoomType natural join RoomNo WHERE RoomNo not in 
+		(
+		SELECT roomcode
+		FROM reservation Where 
+		 (( reservationcheckin between #{ReservationCheckIn}  and  #{ReservationCheckOut})
+		 or ( reservationcheckout between #{ReservationCheckIn}  and  #{ReservationCheckOut})
+		 or ( reservationcheckin < #{ReservationCheckOut} and reservationcheckout > #{ReservationCheckIn}))
+		) order by RoomNo asc
+	]]>	 	 
+	</select>	
+	
+	<select id="findEmptyRoomListCnt" parameterType="ReservationVo" resultType="RoomVo">
+	<![CDATA[ 
+		SELECT RoomType ,count(*) as RoomTypeCnt
+		FROM RoomType natural join RoomNo WHERE RoomNo not in 
+		(
+		SELECT roomcode
+		FROM reservation Where 
+		 (( reservationcheckin between #{ReservationCheckIn}  and  #{ReservationCheckOut})
+		 or ( reservationcheckout between #{ReservationCheckIn}  and  #{ReservationCheckOut})
+		 or ( reservationcheckin < #{ReservationCheckOut} and reservationcheckout > #{ReservationCheckIn}))
+		) group by RoomType
+	]]>	 	 
+	</select>		
+	
+	<select id="findEmptySelectRoomList" parameterType="ReservationVo" resultType="RoomVo">
+	<![CDATA[ 
+		SELECT *
+		FROM RoomType natural join RoomNo WHERE RoomType = #{RoomType} and RoomNo not in 
+		(
+		SELECT roomcode
+		FROM reservation Where 
+		 (( reservationcheckin between #{ReservationCheckIn}  and  #{ReservationCheckOut})
+		 or ( reservationcheckout between #{ReservationCheckIn}  and  #{ReservationCheckOut})
+		 or ( reservationcheckin < #{ReservationCheckOut} and reservationcheckout > #{ReservationCheckIn}))
+		) 
+        order by RoomNo asc
+	]]>	 	 
+	</select>	
+	<select id="findEmptySelectRoomListCnt" parameterType="ReservationVo" resultType="RoomVo">
+	<![CDATA[ 
+		SELECT  RoomType ,count(*) as RoomTypeCnt
+		FROM RoomType natural join RoomNo WHERE RoomType = #{RoomType} and RoomNo not in 
+		(
+		SELECT roomcode
+		FROM reservation Where 
+		 (( reservationcheckin between #{ReservationCheckIn}  and  #{ReservationCheckOut})
+		 or ( reservationcheckout between #{ReservationCheckIn}  and  #{ReservationCheckOut})
+		 or ( reservationcheckin < #{ReservationCheckOut} and reservationcheckout > #{ReservationCheckIn}))
+		) group by RoomType
+	]]>	 	 
+	</select>		
+</mapper>

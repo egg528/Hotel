@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+ 
+<tiles-definitions>
+
+	<!-- (1) 레이아웃을 적용하지않는화면-->
+	<definition name=".mainLayout" template="/WEB-INF/spring/tiles/layout/tilesLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/spring/tiles/tile/emptyHeader.jsp" />
+		<put-attribute name="leftSide" value="" />
+		<put-attribute name="footer" value="/WEB-INF/spring/tiles/tile/footer.jsp" />
+	</definition>
+	
+	<!-- (2) 왼쪽 메뉴 레이아웃을 적용하는 화면 -->
+	<definition name=".adminlayout" template="/WEB-INF/spring/tiles/layout/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/spring/tiles/tile/emptyHeader.jsp" />
+		<put-attribute name="leftSide" value="" />
+		<put-attribute name="footer" value="/WEB-INF/spring/tiles/tile/footer.jsp" />
+	</definition>
+	
+	<!-- (3) 왼쪽 메뉴와 헤더 없는 레이아웃을 적용하는 화면 -->
+	<definition name=".loginlayout" template="/WEB-INF/spring/tiles/layout/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/spring/tiles/tile/emptyHeader.jsp" />
+		<put-attribute name="leftSide" value="" />
+		<put-attribute name="footer" value="/WEB-INF/spring/tiles/tile/footer.jsp" />
+	</definition>
+	
+	<!-- (1) -->
+	<definition name="/main/*" extends=".mainLayout">
+		<put-attribute name="content" value="/WEB-INF/views/main/{1}.jsp" />
+	</definition>
+	
+	<!-- (2) -->
+	<definition name="/admin/*" extends=".adminlayout">
+		<put-attribute name="content" value="/WEB-INF/views/admin/{1}.jsp" />
+	</definition>
+	
+	<!-- (3) -->
+	<definition name="/login/*" extends=".loginlayout">
+		<put-attribute name="content" value="/WEB-INF/views/login/{1}.jsp" />
+	</definition>
+	
+</tiles-definitions>

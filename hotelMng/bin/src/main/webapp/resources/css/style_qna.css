@@ -1,0 +1,222 @@
+@charset "utf-8";
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    /* margin-left:auto;
+    margin-right: auto; */
+    margin: 0px;
+    padding:0px;
+    background-color: #fbfcf5;
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+a {
+    color:#111111;
+    text-decoration:none
+}
+.left{
+    float: left;
+    background-color:#D4C1A1;
+    margin-left:40px;
+    margin-top:15px;
+}
+.banner{
+    width:240px;
+    height:400px;
+    margin-left:50px;
+    background-color: #D4C1A1;
+}
+.tit{
+    padding: 22px;
+    text-align: center;
+    height: 50px;
+}
+.mini_title {
+    padding: 10px 0;
+}
+.m1{
+    height: 50px;
+    width:200px;
+}
+.m2{
+    height: 50px;
+}
+h3 {
+    margin: 19px 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+h3.tit_ {
+    font-size:15px
+}
+.contain{
+    width: 1200px;
+    margin-top:30px;
+    min-height: 500px;
+    font-size: 18px;
+    color: #333333
+}
+.contents{
+    float:right;
+    margin-right:-120px;
+    width:960px;
+    height:1200px;
+}
+.clear {
+    clear: both;
+    display: block;
+    font-size: 0px;
+    height: 0px;
+    line-height: 0;
+    width: 100%;
+    overflow:hidden;
+}
+.d_form {
+    margin: 5px 0;
+    font-size: 15px;
+    padding: 10px 14px 10px 14px;
+    border:1px solid #ccc;
+    border-color:#dbdbdb #d2d2d2 #d0d0d0 #d2d2d3;
+    box-sizing: border-box;
+    box-shadow:inset .1em .1em .15em rgba(0,0,0,.1);
+    vertical-align:middle;
+    line-height:1.25em;
+    outline:0;
+    background-color: #fafaf7eb;
+}
+.view_d_form {
+    margin: 5px 0;
+    font-size: 15px;
+    padding: 10px 14px 10px 14px;
+    border:1px solid #ccc;
+    box-sizing: border-box;
+    vertical-align:middle;
+    line-height:1.25em;
+    outline:0;
+    /*background-color: #fafaf7eb;*/
+}
+.d_form.std {
+    width:69%
+}
+
+.d_form.mini {
+    width:49.5%
+}
+
+.d_form.large {
+    width:100%
+}
+.d_form.large_write,
+.view_d_form.large_write{
+    width:100%;
+    height: 300px;
+}
+.box {
+    display: block;
+    margin-top: 14px;
+    width: 100%;
+    height: 40px;
+    border: solid 1px #dadada;
+    padding: 9px 14px 10px 14px;
+    box-sizing: border-box;
+    background-color: #fafaf7eb;
+    position: relative;
+}
+textarea {
+    resize: vertical;
+    padding: 10px;
+    width: 100%;
+    background-color: #fafaf7eb;
+    border:1px solid #ccc;
+    border-color:#dbdbdb #d2d2d2 #d0d0d0 #d2d2d3;
+}
+/*#btnUpdate,*/
+/*#btnList,*/
+/*#btnDelete,*/
+/*#btnSave,*/
+/*#btnWrite
+ */
+#btnSave, button {
+    width: 10%;
+    padding: 10px 14px 10px 14px;
+    margin-top: 4px;
+    border:1px solid #ccc;
+    /* cursor: pointer; */
+    color: #fff;
+    background-color: #333333;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    font-size: 16px;
+}
+th {
+    text-align: left;
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: #f5f5f5;
+}
+.table-hover > tbody > tr > td.active:hover,
+.table-hover > tbody > tr > th.active:hover,
+.table-hover > tbody > tr.active:hover > td,S
+.table-hover > tbody > tr:hover > .active,
+.table-hover > tbody > tr.active:hover > th {
+    background-color: #e8e8e8;
+}
+
+.col_one_third {
+    width: 30.63%;
+}
+.col_two_third {
+    width: 65.33%;
+}
+.col_last {
+    margin-right: 0 !important;
+    clear: right;
+}
+.col_full {
+    display: block;
+    position: relative;
+    margin-right: 4%;
+    margin-bottom: 50px;
+    clear: both;
+    float: none;
+    margin-right: 0;
+}
+.col_one_third,
+.col_two_third{
+    display: block;
+    position: relative;
+    margin-right: 4%;
+    margin-bottom: 50px;
+    float: left;
+}
+
+form .col_one_third {
+    margin-bottom: 25px;
+    width: 30%;
+}
+form .col_two_third {
+    margin-bottom: 25px;
+}

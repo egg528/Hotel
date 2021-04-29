@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reservation">
+
+	<insert id = "insertReservation" parameterType="ReservationVo">
+		INSERT INTO RESERVATION (ReservationCode
+								,ReservationCheckIn
+								,ReservationCheckOut
+								,ReservationPeopleNumber
+								,ReservationDate
+								,ReservationMemo
+								,UserId
+								,RoomCode
+								,ReservationDays
+								,Breakfast
+								,TotalPrice
+								,Mileage
+								,Card
+								,CardNum
+								,CardValid
+		)
+		
+		VALUES ((select nvl(max(reservationcode)+1,0) from reservation)
+				, #{ReservationCheckIn}
+				, #{ReservationCheckOut}
+				, #{ReservationPeopleNumber}
+				, sysdate
+				, #{ReservationMemo}
+				, #{UserId}
+				, #{RoomCode}
+				, #{ReservationDays}
+				, #{Breakfast}
+				, #{TotalPrice}
+				, #{Mileage}
+				, #{Card}
+				, #{CardNum}
+				, #{CardValid}
+		)
+	
+	</insert>
+	
+	<select id="selectReservation" parameterType="String" resultType="ReservationVo">
+		SELECT * FROM Reservation
+		WHERE ReservationCode = #{ReservationCode}
+	</select>
+	
+	<select id="selectReservationList" parameterType="ReservationVo" resultType="ReservationVo">
+		SELECT * FROM Reservation
+		WHERE UserId = #{UserId}
+	</select>
+	
+	<delete id="deleteReservation" parameterType="ReservationVo">
+		DELETE FROM RESERVATION
+		WHERE ReservationCode = #{ReservationCode}
+	</delete>
+	
+	<select id="listReservation" resultType="ReservationVo">	
+	SELECT *
+	FROM Reservation
+	order by ReservationCode desc
+	</select>
+
+</mapper>

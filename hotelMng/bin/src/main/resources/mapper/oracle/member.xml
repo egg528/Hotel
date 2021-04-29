@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	
+	<select id="selectMember" parameterType="MemberVo" resultType="MemberVo">
+		SELECT * FROM MEMBER WHERE UserId = #{UserId}
+	</select>
+		
+		
+	<insert id="insertMember" parameterType="MemberVo">
+		INSERT INTO MEMBER (UserId
+						,UserPassword
+						,UserName
+						,UserPhone
+						,UserBirth
+						,UserEmail
+						,UserPostCode
+						,UserAddress
+						,UserDetailAddress
+						,UserExtraAddress
+						,UserLevel
+						,UserGrade
+						,UserMile
+						,UserGender
+		)
+		
+		VALUES (#{UserId}
+				, #{UserPassword}
+				, #{UserName}
+				, #{UserPhone}
+				, #{UserBirth}
+				, #{UserEmail}
+				, #{UserPostCode}
+				, #{UserAddress}
+				, #{UserDetailAddress}
+				, #{UserExtraAddress}
+				, '1'
+				, 'NEW'
+				, '0'
+				, #{UserGender}
+		)
+	</insert>
+	
+	<update id="updateLevel" parameterType="MemberVo">
+		UPDATE Member SET UserLevel=#{UserLevel}
+		WHERE UserId=#{UserId}
+	</update>
+		
+	<select id="listMember" resultType="MemberVo">	
+	SELECT *
+	FROM Member
+	Where Userlevel = '1';
+	</select>
+	
+	
+	<select id="selectBoardCount" resultType="Integer">
+		SELECT COUNT(*) FROM Member
+	</select>
+
+	<select id="listBlockSelect" parameterType="java.util.Map" resultType="MemberVo">
+		SELECT *
+		FROM (
+		SELECT @NO := @NO + 1 AS ROWNUM, A.*
+		FROM
+		  (
+		    SELECT *
+		    FROM Member
+		  ) A,
+		  ( SELECT @NO := 0 ) B 
+		) C
+		WHERE C.ROWNUM BETWEEN #{startNum} AND #{endNum}
+	</select>
+	
+	<select id="boardView" parameterType="String" resultType="MemberVo">
+		SELECT * FROM Member WHERE id=#{id}
+	</select>
+
+
+	
+	<select id="findDateTotal" parameterType="java.util.Map" resultType="Integer">
+		SELECT COUNT(*) FROM Member WHERE DATE(joinDate) between #{startDate} and #{endDate}
+	</select>
+
+	
+	
+	
+	<update id="updateMember" parameterType="MemberVo">
+		UPDATE Member SET password=#{password}
+						,subscriberName=#{subscriberName}
+						,subscriberTelephone=#{subscriberTelephone}
+						,subscriberCellphone=#{subscriberCellphone}
+						,buisnessName=#{buisnessName}
+						,buisnessNumber=#{buisnessNumber}
+						,chargemanagerName=#{chargemanagerName}
+						,chargemanagerTelephone=#{chargemanagerTelephone}
+						,chargemanagerFaxnumber=#{chargemanagerFaxnumber}
+						,chargemanagerMailnumber=#{chargemanagerMailnumber}
+						,chargemanagerAddress=#{chargemanagerAddress}
+						,chargemanagerAddressDetail=#{chargemanagerAddressDetail}
+						,chargemanagerEmail=#{chargemanagerEmail}
+		WHERE id=#{id}
+	</update>
+	
+	<delete id="deleteMember" parameterType="MemberVo">
+		DELETE FROM MEMBER
+		WHERE UserId = #{UserId}
+	</delete>
+	
+	<update id="updateMile" parameterType="MemberVo">
+		UPDATE MEMBER
+		SET UserMile = #{UserMile}
+		WHERE UserId = #{UserId}
+	</update>
+	
+	<update id="updateGrade" parameterType="MemberVo">
+		UPDATE MEMBER
+		SET UserGrade = #{UserGrade}
+		WHERE UserId = #{UserId}
+	</update>
+	
+	<select id="checkId" parameterType="String" resultType="MemberVo">
+		SELECT id from Member WHERE id=#{id}
+	</select>
+
+</mapper>

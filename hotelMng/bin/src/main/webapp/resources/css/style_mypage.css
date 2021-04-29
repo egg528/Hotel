@@ -1,0 +1,121 @@
+@charset "utf-8";
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    /* margin-left:auto;
+    margin-right: auto; */
+    margin: 0px;
+    padding:0px;
+    background-color: #fbfcf5;
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+a {
+    color:#111111;
+    text-decoration:none
+}
+.left{
+    float: left;
+    background-color:#D4C1A1;
+    margin-left:40px;
+    margin-top:15px;
+}
+.banner{
+    width:240px;
+    height:400px;
+    margin-left:50px;
+    background-color: #D4C1A1;
+}
+.tit{
+    padding: 22px;
+    text-align: center;
+    height: 50px;
+}
+.m1{
+    height: 50px;
+    width:200px;
+}
+.m2{
+    height: 50px;
+}
+.m3{
+    height: 50px;
+}
+.m4{
+    height: 50px;
+}
+h3 {
+    margin: 19px 0 8px;
+    font-size: 18px;
+    font-weight: 700;
+}
+h4 {
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.contain{
+    width: 1200px;
+    margin-top:30px;
+    min-height: 500px;
+    background-color: #fbfcf5;
+    font-size: 18px;
+    color: #333333
+}
+.contents{
+    float:right;
+    margin-right:-120px;
+    width:960px;
+    height:1200px;
+}
+
+.table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    padding: 11px 8px 11px 8px;
+    line-height: 2;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    font-size: 16px;
+}
+th {
+    text-align: left;
+}
+.pd {
+    text-align: left;
+    width: 15%;
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: #f5f5f5;
+}
+.table-hover > tbody > tr > td.active:hover,
+.table-hover > tbody > tr > th.active:hover,
+.table-hover > tbody > tr.active:hover > td,S
+.table-hover > tbody > tr:hover > .active,
+.table-hover > tbody > tr.active:hover > th {
+    background-color: #e8e8e8;
+}
+
+.submit-btn {
+    padding: 8px 11px;
+    border: 1px solid #ccc;
+    color: #fff;
+    background-color: #333333;
+    font-size: 12px;
+    font-weight: 400;
+} 

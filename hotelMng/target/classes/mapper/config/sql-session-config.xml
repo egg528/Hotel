@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+
+	<typeAliases>
+	<!-- DTO 및 VO alias 설정 -->
+		<typeAlias alias="MemberVo"                  type="com.khotel.Vo.MemberVo"/>
+		<typeAlias alias="RoomVo"                  type="com.khotel.Vo.RoomVo"/>
+		<typeAlias alias="QnaVo"                  type="com.khotel.Vo.QnaVo"/>
+		<typeAlias alias="ReservationVo"                  type="com.khotel.Vo.ReservationVo"/>
+		<typeAlias alias="StaffVo"                  type="com.khotel.Vo.StaffVo"/>
+		<typeAlias alias="TabletVo"                  type="com.khotel.Vo.TabletVo"/>
+	</typeAliases>
+
+	<!-- src/main/resouces/mapper/mysql 하위 xml 매퍼 설정 (현재 하위 모든 매퍼파일 read하도록 되어있으므로 추가 설정 필요 무) -->
+	<!-- <mappers></mappers> -->
+	
+</configuration>
