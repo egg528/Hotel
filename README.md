@@ -25,3 +25,9 @@
   - 호텔 소개![Alt text](image/hotel1.png)
   - 로그인![Alt text](image/login.png)
   - 예약 페이지![Alt text](image/reservation.png)
+
+- 기능들
+  - 로그인
+  - 예약 (예약 현황 고려)
+  - 문의하기(게시판)
+  - 예약 관리 등
