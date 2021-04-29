@@ -20,7 +20,7 @@
 
 객실 테블릿과 객실 담당 직원은 예시로 각각 101호와 1층 담당 직원으로 올려놓았습니다.
 
-- web
+- Screen
   - 메인 화면![Alt text](image/main.png)
   - 호텔 소개![Alt text](image/hotel1.png)
   - 로그인![Alt text](image/login.png)
